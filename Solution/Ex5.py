@@ -468,7 +468,6 @@ try:
         
         
         #Chain
-
         #diffc = 1000000
         diffc = max(werte)
         anz = len(werte)
@@ -507,13 +506,12 @@ try:
         print(f"Min deviation is {min(diffc, diffp, zw):.2} as {bestres}")
         
         
-        """
         #NEW:
         import numpy as np
         import matplotlib.pyplot as plt
 
         # some example data
-        threshold = bestres
+        threshold = min(diffc, diffp, zw)
         values = np.array([diffc, diffp, zw])
         x = range(len(values))
 
@@ -530,12 +528,12 @@ try:
         ax.plot([0., 4.5], [threshold, threshold], "k--")
 
         fig.savefig("look-ma_a-threshold-plot.png")
-        
+        plt.show() #to show the graph
         
         
         soll=int(input("wanna do another? type in next value:  "))
         
-        """
+        
 
  
 except ValueError:
@@ -570,3 +568,5 @@ ax.bar(x, above_threshold, 0.35, color="r",
 ax.plot([0., 4.5], [threshold, threshold], "k--")
 
 fig.savefig("look-ma_a-threshold-plot.png")
+
+
