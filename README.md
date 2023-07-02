@@ -1,6 +1,6 @@
 <div align="center"><h1><img src="https://github.com/LockheedMartin-lab/Prog1/blob/main/Other%20sources%20/Other/Python-logo-notext.svg.png" alt="" height=32px width=32px></img>&nbspPython Prog1 HM LRB/MBB</h1></div>
 
-$${\color{red}Code functionality is not guaranteed}$$
+$${\color{red}Code \space functionality \space is \space not \space guaranteed}$$
 Folders:
 * [Prog1 course solutions 1-6](https://github.com/LockheedMartin-lab/Prog1/tree/main/Solution)
 * [Solution of finals](https://github.com/LockheedMartin-lab/Prog1/tree/main/Finals)
