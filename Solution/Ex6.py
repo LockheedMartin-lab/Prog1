@@ -45,7 +45,7 @@ y: Beschlaeunigung
 start: t&v 0
 m(t) &v(t) known: 
 """
-"""
+
 
 #t in sec
 t_start = 0
@@ -63,14 +63,8 @@ stopcalcperc = 95 #stop calc at fuel %
 #function try
 #a: beschl
 #
-""" 
-# moved into while
 
-#m = m - R * t_delta
-#a = (F/m)-g
-#v = v(t)+t_delta * a
-"""
-import math.plot as plt
+import matplotlib.pyplot as plt
 
 #Index indicates start loadout
 m_start = 2.75*10**6
@@ -89,8 +83,8 @@ t_end = t * m_stage1perc / 100
 #m_start = m_start - R * t
 
 #create list
-#t_values = []
-#v_values = []
+t_values = []
+v_values = []
 
 
 #first run values
@@ -109,7 +103,7 @@ while t <= t_end:
     v = v + t_delta * a
     
     
-    print(f" t = {t:.2f} s, v = {v:.2f}')
+    print(f" t = {t:.2f} s, v = {v:.2f}")
     
     
     t=t+t_delta
@@ -117,11 +111,11 @@ while t <= t_end:
     v_values.append(v)
 
 
-plt.plot(t_values,y_values,"r--"")
+plt.plot(t_values,v_values,"r--")
 plt.grid(True)
 plt.show()
 
-"""
+
 
 
 #%% plot, yes another one
@@ -179,6 +173,7 @@ x = 0  # start of the plot
 i = 1 
 fig, ax = plt.subplots() #no fucking clue what it does, lmk if you do (allowes you to use the ax pallet as far as ik)
 
+#List creation
 x_values_a1 = []
 y_values_a1 = []
 
@@ -189,13 +184,11 @@ x_values_a3 = []
 y_values_a3 = []
 
 for a0 in range(0,len(short)):
-    #List creation
-    
 
     while x < 10:
         vx0 = v0 * math.cos(math.radians(a0))
         vy0 = v0 * math.sin(math.radians(a0))
-        y = (-g / 2) * (x / vx0) ** 2 + vy0 * (x / vx0)
+        y = (-g / 2) * (x**2 / vx0**2) + vy0 * (x / vx0)
 
         #if's to change the list append
         if i == 1: 
@@ -212,23 +205,23 @@ for a0 in range(0,len(short)):
             
         else:
             print("error :/")
-            
 
         x += delta
     
     x = 0
     i = i+1
 
-ax.plot(x_values_a1, y_values_a1, label="a{}".format(a0))
-ax.plot(x_values_a2, y_values_a2, label="a{}".format(a0))
-ax.plot(x_values_a3, y_values_a3, label="a{}".format(a0))
-    
+ax.plot(x_values_a1, y_values_a1, label="a1".format(a0)) #ignore the error, it works...
+ax.plot(x_values_a2, y_values_a2, label="a2".format(a0))
+ax.plot(x_values_a3, y_values_a3, label="a3".format(a0))
+
+
+#General plot settings
 ax.grid(True)
 ax.set_xlabel("length in m")
 ax.set_ylabel("height in m")
 ax.set_title("Sad decreasing function")
 ax.legend()
-
 plt.show()
 
 
@@ -241,15 +234,52 @@ import math as math
 y = int(input("value for y: "))
 x = int(input("value for x: "))
 
-delta_y = .1
+increment_y = .1
 y_start = 0
 y_end = .8
 
-inter
+increment_x = .2
+x_start = 0
+x_end = 1.4
+
+#Important info:
+    #Cell size 6 & .*** dec
+
 
 e = math.e #def of e with math 
 
-f = (e**(-(x**2 + y**2)))/(1 + x**2 + y**2)**.5
+#f = (e**(-(x**2 + y**2)))/(1 + x**2 + y**2)**.5
+
+print("x|y  |  0.0    0.1    0.2    0.3    0.4    0.5    0.6    0.7    0.8  ")
+
+y_value = []
+x_value = []
+
+while x_start < x_end:
+    
+
+    
+    while y_start < y_end:
+        
+        f = (e**(-(x**2 + y**2)))/(1 + x**2 + y**2)**.5
+        y_value.append(f)
+        x_value.append(x)
+        
+        y = y + increment_y
+        
+        print(f"{x_value(0):6.3f}{y_value(0):6.3f}{y_value(1):6.3f}{y_value(2):6.3f}{y_value(3):6.3f}{y_value(4):6.3f}{y_value(5):6.3f}{y_value(6):6.3f}{y_value(7):6.3f}{y_value(8):6.3f}")
+
+
+    y_value = []
+    x_value = []
+    x = x + increment_x
+    
+
+
+
+
+
+
 
 
 
