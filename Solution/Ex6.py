@@ -33,7 +33,7 @@ fig.savefig("look-ma_a-threshold-plot.png")
 
 
 
-#%% T6 A1
+#%% T6 A1 broken
 """
 Geschwindingkeit einer Saturn-V-Rakete 
 waehrend der ersten Stufe
@@ -227,7 +227,7 @@ plt.show()
 
 
 
-#%% try  T6 A3
+#%% try  T6 A3 not finished
 
 import math as math
 
