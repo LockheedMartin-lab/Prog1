@@ -4,13 +4,13 @@ $${\color{red}Code \space functionality \space is \space not \space guaranteed}$
 Folders:
 * [Prog1 course solutions 1-6](https://github.com/LockheedMartin-lab/Prog1/tree/main/Solution)
 * [Solution of finals](https://github.com/LockheedMartin-lab/Prog1/tree/main/Finals)
-* [Other sources](https://github.com/LockheedMartin-lab/Prog1/tree/main/Other%20sources%20)
+* [Other sources](https://github.com/LockheedMartin-lab/Prog1/tree/main/Other%20sources%20)  
 
+for obvious reasons, i can't provide the excercises them selfes 
 
 
 ### The files in folder ['other scources'](https://github.com/LockheedMartin-lab/Prog1/tree/main/Other%20sources%20) are just a reference, they are not mine nor do I have any kind of ownership
- Source links:
- 
+ Source links:  
  * [combined-cheatsheet.pdf](http://parallel.vub.ac.be/education/python/cheatsheets/combined-cheatsheet.pdf)
  * [Python_Cheat_Sheet_for_Beginners.pdf](https://www.datacamp.com/cheat-sheet/getting-started-with-python-cheat-sheet)
  * [davechild_python.pdf](https://cheatography.com/davechild/cheat-sheets/python/)
