@@ -183,12 +183,13 @@ y_values_a2 = []
 x_values_a3 = []
 y_values_a3 = []
 
+y=0
 for a0 in range(0,len(short)):
 
     while x < 10:
         vx0 = v0 * math.cos(math.radians(a0))
         vy0 = v0 * math.sin(math.radians(a0))
-        y = (-g / 2) * (x**2 / vx0**2) + vy0 * (x / vx0)
+        y += (-g / 2) * (x / vx0)**2 + vy0 * (x / vx0)
 
         #if's to change the list append
         if i == 1: 
@@ -206,7 +207,7 @@ for a0 in range(0,len(short)):
         else:
             print("error :/")
 
-        x += delta
+        x = x + delta
     
     x = 0
     i = i+1
@@ -267,12 +268,63 @@ while x_start < x_end:
         
         y = y + increment_y
         
-        print(f"{x_value(0):6.3f}{y_value(0):6.3f}{y_value(1):6.3f}{y_value(2):6.3f}{y_value(3):6.3f}{y_value(4):6.3f}{y_value(5):6.3f}{y_value(6):6.3f}{y_value(7):6.3f}{y_value(8):6.3f}")
+        print(f"{y_value[0]:6.3f}{x_value[0]:6.3f}{x_value[1]:6.3f}{x_value[2]:6.3f}{x_value[3]:6.3f}{x_value[4]:6.3f}{x_value[5]:6.3f}{x_value[6]:6.3f}{x_value[7]:6.3f}{x_value[8]:6.3f}")
 
 
     y_value = []
     x_value = []
-    x = x + increment_x
+    x_start = x_start + increment_x
+    
+
+
+
+
+#%% try2  T6 A3 not finished
+
+import math as math
+
+y = int(input("value for y: "))
+x = int(input("value for x: "))
+
+increment_y = .1
+y_start = 0
+y_end = .8
+
+increment_x = .2
+x_start = 0
+x_end = 1.4
+
+#Important info:
+    #Cell size 6 & .*** dec
+
+
+e = math.e #def of e with math 
+
+#f = (e**(-(x**2 + y**2)))/(1 + x**2 + y**2)**.5
+
+print("x|y  |  0.0    0.1    0.2    0.3    0.4    0.5    0.6    0.7    0.8  ")
+
+y_value = []
+x_value = []
+
+while x_start < x_end:
+    
+
+    
+    while y_start < y_end:
+        
+        f = (e**(-(x**2 + y**2)))/(1 + x**2 + y**2)**.5
+        y_value.append(f)
+        x_value.append(x)
+        
+        y = y + increment_y
+        
+        print(f"{y_value[0]:6.3f}{x_value[0]:6.3f}{x_value[1]:6.3f}{x_value[2]:6.3f}{x_value[3]:6.3f}{x_value[4]:6.3f}{x_value[5]:6.3f}{x_value[6]:6.3f}{x_value[7]:6.3f}{x_value[8]:6.3f}")
+
+
+    y_value = []
+    x_value = []
+    x_start = x_start + increment_x
     
 
 
@@ -280,9 +332,37 @@ while x_start < x_end:
 
 
 
+#%% Chat answer
 
+import math
 
+y = 0
+x = 0
 
+increment_y = 0.1
+y_start = 0
+y_end = 0.8
 
+increment_x = 0.2
+x_start = 0
+x_end = 1.4
+
+e = math.e
+
+print("x|y  |  0.0    0.1    0.2    0.3    0.4    0.5    0.6    0.7    0.8  ")
+
+while x_start <= x_end:
+    y_start = 0
+    
+    while y_start <= y_end:
+        f = (e**(-(x**2 + y**2))) / (1 + x**2 + y**2)**0.5
+        print(f"{x:6.3f}{y:6.3f}{f:6.3f}", end=" ")
+        y_start += increment_y
+        y = round(y + increment_y, 1)
+    
+    print()
+    x_start += increment_x
+    x = round(x + increment_x, 1)
+    y = 0
 
 
