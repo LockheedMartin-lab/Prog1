@@ -4,9 +4,16 @@
 Created on Tue Apr 18 15:30:47 2023
 
 @author: LockheedMartin
+
+
+
+Anotation (only in this file): 
+    #%%#: Finished
+    #%% : something's wrong, baybe dk what though 
+
 """
 
-#%% ADD nice plot very short
+#%%# ADD nice plot very short
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -33,18 +40,58 @@ fig.savefig("look-ma_a-threshold-plot.png")
 
 
 
-#%% T6 A1 broken
-"""
-Geschwindingkeit einer Saturn-V-Rakete 
-waehrend der ersten Stufe
-y=m*x+t
-x: Zeit
-y: Beschlaeunigung
+#%%# T6 A1 working but weird af
+m_anfang = 2.75e6
+
+m_nutz = m_anfang*(1-0.727)
+m_min_treib = m_anfang*0.727*0.05
+
+r = 13.5e3
+f_schub = 35.1e6
+g = 9.81
+delta_t = 0.05
+c = 340
+
+v = [0]
+a = []
+t_schall = None
+
+i, t = 1, delta_t 
+m_aktuell = m_anfang
+while m_aktuell - m_nutz >= m_min_treib:
+    
+    a.append(f_schub / m_aktuell - g)
+    v.append(v[i-1] + delta_t * a[i-1])
+    
+    if v[-1]>=c and t_schall== None:
+        t_schall = t
+    
+    #korrektur des m_aktuell
+    m_aktuell = m_aktuell - r * delta_t
+    
+    i+=1
+    t+= delta_t
+    
+#Ausgabe
+
+for v_aktuell in v:
+    print(f"t = {t:.2f} s, v = {v_aktuell:.3f} m/s")
+    
 
 
-start: t&v 0
-m(t) &v(t) known: 
-"""
+
+
+
+
+
+
+ 
+
+
+
+
+
+#%% T6 A1 broken (it's a lost cause, just figuring out wtf was intended is enough work :P)
 
 
 #t in sec
@@ -76,11 +123,6 @@ m_end = m_stage1 * m_stage1perc / 100
 #Calc of calc duration
 t = m_start/R
 t_end = t * m_stage1perc / 100
-#t_calcend = 
-
-
-#calc m: (in while)
-#m_start = m_start - R * t
 
 #create list
 t_values = []
@@ -118,7 +160,7 @@ plt.show()
 
 
 
-#%% plot, yes another one
+#%%# plot, yes another one
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -142,21 +184,7 @@ demo('default')
 demo('seaborn-v0_8')
 
 
-#%% try      Rocket 2.0
-
-
-
-
-
-
-
-
-
-
-#%% T6 A2 works, but weird plot
-
-import matplotlib.pyplot as plt
-import math as math
+#%%# T6 A2
 
 delta = 0.05
 
@@ -184,12 +212,12 @@ x_values_a3 = []
 y_values_a3 = []
 
 y=0
-for a0 in range(0,len(short)):
+for a0 in short:
 
     while x < 10:
         vx0 = v0 * math.cos(math.radians(a0))
         vy0 = v0 * math.sin(math.radians(a0))
-        y += (-g / 2) * (x / vx0)**2 + vy0 * (x / vx0)
+        y = (-g / 2) * (x / vx0)**2 + vy0 * (x / vx0)
 
         #if's to change the list append
         if i == 1: 
@@ -228,6 +256,157 @@ plt.show()
 
 
 
+
+
+#%%# T6 A2 2. solution
+
+import matplotlib.pyplot as plt
+import math as math
+
+delta = 0.05
+
+a1 = 20
+a2 = 40
+a3 = 60
+
+v0 = 10  # in m/s
+g = 9.81  # in m/s^2
+
+#short = [a1, a2, a3]
+
+x = 0  # start of the plot
+i = 0
+fig, ax = plt.subplots() #no fucking clue what it does, lmk if you do (allowes you to use the ax pallet as far as ik)
+
+#List creation
+x_values_a1 = []
+y_values_a1 = []
+
+
+y=0
+
+
+while i<3:
+    
+    if i == 0:
+        p = a1
+    elif i == 1:
+        p = a2
+    else:
+        p = a3
+            
+    while x < 10:
+        
+        #calc
+        vx0 = v0 * math.cos(math.radians(p))
+        vy0 = v0 * math.sin(math.radians(p))
+        y = (-g / 2) * (x / vx0)**2 + vy0 * (x / vx0)
+        
+        x_values_a1.append(x) #add to list
+        y_values_a1.append(y)
+        
+        x+=delta
+    
+    ax.plot(x_values_a1, y_values_a1, label="a" f"{i}".format(p))
+    x=0
+    x_values_a1 = []
+    y_values_a1 = []
+    i+=1
+
+
+
+
+#vx0 = v0 * math.cos(math.radians(p))
+#vy0 = v0 * math.sin(math.radians(p))
+
+
+#General plot settings
+ax.grid(True)
+ax.set_xlabel("length in m")
+ax.set_ylabel("height in m")
+ax.set_title("Sad decreasing function")
+ax.legend()
+plt.show()
+
+
+
+
+
+
+#%% rocket try 10 aka hopefully last try :P (it wasn't btw)
+
+#imports
+import matplotlib.pyplot as plt
+
+print("Test1 :)")
+#other specs
+R = 13.5*10**3 #Fuel usage
+F = 35.1*10**6 #force outwards
+g = 9.81 #legendary G
+c = 340 #speed of sound in m/s
+stopcalcperc = 5 #in %
+
+print("Test2 :)")
+#weight num
+fuel_weight_perc = 72.7
+stop_calc_weight_perc = 100 - 95
+liftof_weight = 2.75 *10**6
+fuel_weight = liftof_weight * fuel_weight_perc / 100
+stop_calc_weight = fuel_weight * stop_calc_weight_perc / 100
+
+print("Test3 :)")
+#create list
+t_values = [] #x-Axis
+v_values = [] #y-Axis
+
+print("Test4 :)")
+#first run values -> adjusting (hopefully by them selfes :P)
+v = 0
+t = 0
+m = liftof_weight
+t_delta = 0.05
+current_weight = fuel_weight = m
+
+print("Test5 :)")
+
+while current_weight > stop_calc_weight:
+    m = m - R * t_delta
+    a = F / m - g
+    v = v + t_delta * a
+
+    print(f"m: {m}, a: {a}, v: {v}")
+    t_values.append(t)
+    v_values.append(v)
+
+    t+=t_delta
+    print("Testxxx :)")
+
+
+plt.plot(t_values,v_values,"r--")
+plt.grid(True)
+plt.show()
+
+print("Test6 :)")
+
+"""
+#t in sec idk if I need it tbh
+t_start = 0 #time start
+t_end = 1 #changed later on
+t_delta = .05 #increment
+
+
+
+#Calc of calc duration
+t = m_start/R
+t_end = t * m_stage1perc / 100
+#t_calcend = 
+
+
+#calc m: (in while)
+#m_start = m_start - R * t
+"""
+
+
 #%% try  T6 A3 not finished
 
 import math as math
@@ -251,6 +430,20 @@ e = math.e #def of e with math
 
 #f = (e**(-(x**2 + y**2)))/(1 + x**2 + y**2)**.5
 
+###till next 3x #: automated version of first print
+u=0
+var_0 = 0
+delta_var = .1
+count= [0]
+while u<8:
+    var = var_0 + delta_var
+    count.append(var)
+    u+=1
+
+print(f"x|y   |{count[0]:6.1f}{count[1]:6.1f}{count[2]:6.1f}{count[3]:6.1f}{count[4]:6.1f}{count[5]:6.1f}{count[6]:6.1f}{count[7]:6.1f}")
+
+###
+
 print("x|y  |  0.0    0.1    0.2    0.3    0.4    0.5    0.6    0.7    0.8  ")
 
 y_value = []
@@ -268,7 +461,7 @@ while x_start < x_end:
         
         y = y + increment_y
         
-        print(f"{y_value[0]:6.3f}{x_value[0]:6.3f}{x_value[1]:6.3f}{x_value[2]:6.3f}{x_value[3]:6.3f}{x_value[4]:6.3f}{x_value[5]:6.3f}{x_value[6]:6.3f}{x_value[7]:6.3f}{x_value[8]:6.3f}")
+        print(f"{y_value[0]:6.3f}{x_value[0]:6.3f}{x_value[1]:6.3f}{x_value[2]:6.3f}{x_value[3]:6.3f}{x_value[4]:6.3f}{x_value[5]:6.3f}{x_value[6]:6.3f}{x_value[7]:6.3f}")
 
 
     y_value = []
@@ -332,7 +525,7 @@ while x_start < x_end:
 
 
 
-#%% Chat answer
+#%% T6 A3 not finished
 
 import math
 
@@ -364,5 +557,6 @@ while x_start <= x_end:
     x_start += increment_x
     x = round(x + increment_x, 1)
     y = 0
+
 
 
