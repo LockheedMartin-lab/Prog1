@@ -13,6 +13,30 @@ Anotation (only in this file):
 
 """
 
+#%%# plot, yes another one
+
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+
+th = np.linspace(0, 2*np.pi, 128)
+
+
+def demo(sty):
+    mpl.style.use(sty)
+    fig, ax = plt.subplots(figsize=(3, 3))
+
+    ax.set_title('style: {!r}'.format(sty), color='C0')
+
+    ax.plot(th, np.cos(th), 'C1', label='C1')
+    ax.plot(th, np.sin(th), 'C2', label='C2')
+    ax.legend()
+
+
+demo('default')
+demo('seaborn-v0_8')
+
+
 #%%# ADD nice plot very short
 
 import numpy as np
@@ -158,30 +182,6 @@ plt.grid(True)
 plt.show()
 
 
-
-
-#%%# plot, yes another one
-
-import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib as mpl
-
-th = np.linspace(0, 2*np.pi, 128)
-
-
-def demo(sty):
-    mpl.style.use(sty)
-    fig, ax = plt.subplots(figsize=(3, 3))
-
-    ax.set_title('style: {!r}'.format(sty), color='C0')
-
-    ax.plot(th, np.cos(th), 'C1', label='C1')
-    ax.plot(th, np.sin(th), 'C2', label='C2')
-    ax.legend()
-
-
-demo('default')
-demo('seaborn-v0_8')
 
 
 #%%# T6 A2
@@ -333,15 +333,15 @@ plt.show()
 
 
 
-#%% rocket try 10 aka hopefully last try :P (it wasn't btw)
+#%% !!rocket try 10 aka hopefully last try :P (it wasn't btw)
 
 #imports
 import matplotlib.pyplot as plt
 
-print("Test1 :)")
+
 #other specs
 R = 13.5*10**3 #Fuel usage
-F = 35.1*10**6 #force outwards
+F = 35.1*10**6 #force
 g = 9.81 #legendary G
 c = 340 #speed of sound in m/s
 stopcalcperc = 5 #in %
@@ -354,39 +354,41 @@ liftof_weight = 2.75 *10**6
 fuel_weight = liftof_weight * fuel_weight_perc / 100
 stop_calc_weight = fuel_weight * stop_calc_weight_perc / 100
 
-print("Test3 :)")
+
 #create list
 t_values = [] #x-Axis
 v_values = [] #y-Axis
 
-print("Test4 :)")
+
 #first run values -> adjusting (hopefully by them selfes :P)
 v = 0
 t = 0
-m = liftof_weight
+#m = liftof_weight
 t_delta = 0.05
-current_weight = fuel_weight = m
+current_weight = fuel_weight #= m
 
-print("Test5 :)")
+
 
 while current_weight > stop_calc_weight:
-    m = m - R * t_delta
-    a = F / m - g
+    a = F / current_weight - g
     v = v + t_delta * a
+    current_weight = current_weight - R * t_delta
 
-    print(f"m: {m}, a: {a}, v: {v}")
+    #print(f"m: {m}, a: {a}, v: {v}")
     t_values.append(t)
     v_values.append(v)
 
     t+=t_delta
-    print("Testxxx :)")
+    
+
 
 
 plt.plot(t_values,v_values,"r--")
 plt.grid(True)
 plt.show()
 
-print("Test6 :)")
+print(f"v end: {v_values[-1]}")
+
 
 """
 #t in sec idk if I need it tbh
@@ -439,12 +441,14 @@ while u<8:
     var = var_0 + delta_var
     count.append(var)
     u+=1
+    
 
 print(f"x|y   |{count[0]:6.1f}{count[1]:6.1f}{count[2]:6.1f}{count[3]:6.1f}{count[4]:6.1f}{count[5]:6.1f}{count[6]:6.1f}{count[7]:6.1f}")
 
-###
 
+"""
 print("x|y  |  0.0    0.1    0.2    0.3    0.4    0.5    0.6    0.7    0.8  ")
+"""
 
 y_value = []
 x_value = []
@@ -460,13 +464,15 @@ while x_start < x_end:
         x_value.append(x)
         
         y = y + increment_y
-        
-        print(f"{y_value[0]:6.3f}{x_value[0]:6.3f}{x_value[1]:6.3f}{x_value[2]:6.3f}{x_value[3]:6.3f}{x_value[4]:6.3f}{x_value[5]:6.3f}{x_value[6]:6.3f}{x_value[7]:6.3f}")
+        print(f"{len(y_value)}")
+        print(f"{len(x_value)}")
 
+    print(f"{y_value[0]:6.3f}{x_value[0]:6.3f}{x_value[1]:6.3f}{x_value[2]:6.3f}{x_value[3]:6.3f}{x_value[4]:6.3f}{x_value[5]:6.3f}{x_value[6]:6.3f}{x_value[7]:6.3f}")
 
     y_value = []
     x_value = []
-    x_start = x_start + increment_x
+
+x_start = x_start + increment_x
     
 
 
