@@ -413,11 +413,10 @@ t_end = t * m_stage1perc / 100
 
 import math as math
 
-y = int(input("value for y: "))
-x = int(input("value for x: "))
+#y = int(input("value for y: "))
+#x = int(input("value for x: "))
 
 increment_y = .1
-y_start = 0
 y_end = .8
 
 increment_x = .2
@@ -452,27 +451,30 @@ print("x|y  |  0.0    0.1    0.2    0.3    0.4    0.5    0.6    0.7    0.8  ")
 
 y_value = []
 x_value = []
+x = 0
 
-while x_start < x_end:
+while x < x_end:
     
-
+    y = 0
     
-    while y_start < y_end:
+    
+    while y < y_end:
         
         f = (e**(-(x**2 + y**2)))/(1 + x**2 + y**2)**.5
         y_value.append(f)
         x_value.append(x)
         
         y = y + increment_y
-        print(f"{len(y_value)}")
-        print(f"{len(x_value)}")
+        #print(f"{len(y_value)}")
+        #print(f"{len(x_value)}")
 
-    print(f"{y_value[0]:6.3f}{x_value[0]:6.3f}{x_value[1]:6.3f}{x_value[2]:6.3f}{x_value[3]:6.3f}{x_value[4]:6.3f}{x_value[5]:6.3f}{x_value[6]:6.3f}{x_value[7]:6.3f}")
+    #print(f"{y_value[0]:6.3f}{x_value[0]:6.3f}{x_value[1]:6.3f}{x_value[2]:6.3f}{x_value[3]:6.3f}{x_value[4]:6.3f}{x_value[5]:6.3f}{x_value[6]:6.3f}{x_value[7]:6.3f}")
+    print(f"{x_value[0]:6.3f}{y_value[0]:6.3f}{y_value[1]:6.3f}{y_value[2]:6.3f}{y_value[3]:6.3f}{y_value[4]:6.3f}{y_value[5]:6.3f}{y_value[6]:6.3f}{y_value[7]:6.3f}")
 
     y_value = []
     x_value = []
-
-x_start = x_start + increment_x
+    
+    x = x + increment_x
     
 
 
