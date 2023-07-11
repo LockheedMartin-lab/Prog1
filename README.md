@@ -1,4 +1,4 @@
-<div align="center"><h1><img src="https://github.com/LockheedMartin-lab/Prog1/blob/main/Other%20sources%20/Other/Python-logo-notext.svg.png" alt="" height=32px width=32px></img>&nbspPython Prog1 HM LRB/MBB</h1></div>
+<div align="center"><h1><img src="https://github.com/LockheedMartin-lab/Prog1/blob/main/Other%20sources/Other/Python-logo-notext.svg.png?raw=true" alt="" height=32px width=32px></img>&nbspPython Prog1 HM LRB/MBB</h1></div>
 
 $${\color{red}Code \space functionality \space is \space not \space guaranteed}$$
 Folders:
