@@ -100,87 +100,6 @@ while m_aktuell - m_nutz >= m_min_treib:
 
 for v_aktuell in v:
     print(f"t = {t:.2f} s, v = {v_aktuell:.3f} m/s")
-    
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-#%% T6 A1 broken (it's a lost cause, just figuring out wtf was intended is enough work :P)
-
-
-#t in sec
-t_start = 0
-t_end = 1 #changed later on
-t_delta = .05 #increment
-
-#other specs
-R = 13.5*10**3
-F = 35.1*10**6
-g = 9.81
-c = 340
-stopcalcperc = 95 #stop calc at fuel %
-
-
-#function try
-#a: beschl
-#
-
-import matplotlib.pyplot as plt
-
-#Index indicates start loadout
-m_start = 2.75*10**6
-m_stage1perc = 72.2 #weight end stage
-m_stage1 = m_start - (m_start*m_stage1perc/100)
-m_end = m_stage1 * m_stage1perc / 100
-
-
-#Calc of calc duration
-t = m_start/R
-t_end = t * m_stage1perc / 100
-
-#create list
-t_values = []
-v_values = []
-
-
-#first run values
-m = m_start
-v = 0
-
-while t <= t_end: 
-    
-    #update list (to include t&v=0)
-    t_values.append()
-    v_values.append()
-    
-    
-    m = m - R * t_delta
-    a = (F/m) - g
-    v = v + t_delta * a
-    
-    
-    print(f" t = {t:.2f} s, v = {v:.2f}")
-    
-    
-    t=t+t_delta
-    t_values.append(t)
-    v_values.append(v)
-
-
-plt.plot(t_values,v_values,"r--")
-plt.grid(True)
-plt.show()
-
 
 
 
@@ -346,7 +265,7 @@ g = 9.81 #legendary G
 c = 340 #speed of sound in m/s
 stopcalcperc = 5 #in %
 
-print("Test2 :)")
+
 #weight num
 fuel_weight_perc = 72.7
 stop_calc_weight_perc = 100 - 95
@@ -374,10 +293,10 @@ while current_weight > stop_calc_weight:
     v = v + t_delta * a
     current_weight = current_weight - R * t_delta
 
-    #print(f"m: {m}, a: {a}, v: {v}")
+    print(f"m: {current_weight}, t: {t}, v: {v}")
     t_values.append(t)
     v_values.append(v)
-
+    #print(f"t= {t:.2}, v= {v:.3}")
     t+=t_delta
     
 
@@ -390,26 +309,7 @@ plt.show()
 print(f"v end: {v_values[-1]}")
 
 
-"""
-#t in sec idk if I need it tbh
-t_start = 0 #time start
-t_end = 1 #changed later on
-t_delta = .05 #increment
-
-
-
-#Calc of calc duration
-t = m_start/R
-t_end = t * m_stage1perc / 100
-#t_calcend = 
-
-
-#calc m: (in while)
-#m_start = m_start - R * t
-"""
-
-
-#%% try  T6 A3 not finished
+#%% try  T6 A3 almost finished
 
 import math as math
 
@@ -441,22 +341,19 @@ while u<8:
     count.append(var)
     u+=1
     
+lable = "x|y" #so it's centered below, that way you don't have to search for the right amount of spaces below
+print(f"{lable:^6}|{count[0]:6.1f}{count[1]:6.1f}{count[2]:6.1f}{count[3]:6.1f}{count[4]:6.1f}{count[5]:6.1f}{count[6]:6.1f}{count[7]:6.1f}") #first line and 
 
-print(f"x|y   |{count[0]:6.1f}{count[1]:6.1f}{count[2]:6.1f}{count[3]:6.1f}{count[4]:6.1f}{count[5]:6.1f}{count[6]:6.1f}{count[7]:6.1f}")
 
 
-"""
-print("x|y  |  0.0    0.1    0.2    0.3    0.4    0.5    0.6    0.7    0.8  ")
-"""
+
 
 y_value = []
 x_value = []
 x = 0
 
 while x < x_end:
-    
     y = 0
-    
     
     while y < y_end:
         
@@ -465,10 +362,8 @@ while x < x_end:
         x_value.append(x)
         
         y = y + increment_y
-        #print(f"{len(y_value)}")
-        #print(f"{len(x_value)}")
 
-    #print(f"{y_value[0]:6.3f}{x_value[0]:6.3f}{x_value[1]:6.3f}{x_value[2]:6.3f}{x_value[3]:6.3f}{x_value[4]:6.3f}{x_value[5]:6.3f}{x_value[6]:6.3f}{x_value[7]:6.3f}")
+
     print(f"{x_value[0]:6.3f}{y_value[0]:6.3f}{y_value[1]:6.3f}{y_value[2]:6.3f}{y_value[3]:6.3f}{y_value[4]:6.3f}{y_value[5]:6.3f}{y_value[6]:6.3f}{y_value[7]:6.3f}")
 
     y_value = []
@@ -480,12 +375,12 @@ while x < x_end:
 
 
 
-#%% try2  T6 A3 not finished
+#%% try2  T6 A3 not finished idk weird af
 
 import math as math
 
-y = int(input("value for y: "))
-x = int(input("value for x: "))
+y = 0
+x = 0
 
 increment_y = .1
 y_start = 0
@@ -517,23 +412,18 @@ while x_start < x_end:
         f = (e**(-(x**2 + y**2)))/(1 + x**2 + y**2)**.5
         y_value.append(f)
         x_value.append(x)
-        
         y = y + increment_y
-        
         print(f"{y_value[0]:6.3f}{x_value[0]:6.3f}{x_value[1]:6.3f}{x_value[2]:6.3f}{x_value[3]:6.3f}{x_value[4]:6.3f}{x_value[5]:6.3f}{x_value[6]:6.3f}{x_value[7]:6.3f}{x_value[8]:6.3f}")
 
 
     y_value = []
     x_value = []
     x_start = x_start + increment_x
-    
 
 
 
 
-
-
-#%% T6 A3 not finished
+#%% BROKEN T6 A3 not finished running like 3x times too much xD wrong af BROKEN
 
 import math
 
@@ -568,7 +458,8 @@ while x_start <= x_end:
 
 
 
-#%% T6 A3 finished but weird answer :S
+
+#%%# T6 A3 short and nice solution :)
 
 import math as m
 
