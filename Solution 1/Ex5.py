@@ -8,6 +8,7 @@ Created on Tue Apr 18 15:30:47 2023
 
 
 #%% Resistors T5 A1 -> List give back smallest comp
+
 #Best: Reference value
 #anz: List size
 #diff: List of sub values
@@ -533,14 +534,9 @@ try:
         
         soll=int(input("wanna do another? type in next value:  "))
         
-        
 
- 
 except ValueError:
     print("Check value!")
-
-
-
 
 
 
@@ -568,5 +564,4 @@ ax.bar(x, above_threshold, 0.35, color="r",
 ax.plot([0., 4.5], [threshold, threshold], "k--")
 
 fig.savefig("look-ma_a-threshold-plot.png")
-
 
