@@ -568,3 +568,27 @@ while x_start <= x_end:
 
 
 
+#%% T6 A3 finished but weird answer :S
+
+import math as m
+
+def funktion(x,y): 
+    fxy=(m.e**(-(x**2+y**2)))/(m.sqrt(1+x**2+y**2)) 
+    return fxy
+    
+xwerte=[x*0.1 for x in range(0,16,2)] 
+ywerte=[y*0.1 for y in range(0,9,1)]
+
+print("x|y", end="") 
+for i in ywerte:
+    print(f"{i:^6.1f}",end="") 
+print()
+for l in xwerte: 
+    print(f"{l:<4.1f}|",end="") 
+    for w in ywerte:
+        wert=funktion(l, w)
+        print(f"{wert:<6.3f}",end="") 
+    print()
+x = funktion(0.2, 0.3)
+print()
+print(f"{x}")
