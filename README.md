@@ -11,6 +11,7 @@ for obvious reasons, i can't provide the excercises them selfes
 
 ### The files in folder ['other scources'](https://github.com/LockheedMartin-lab/Prog1/tree/main/Other%20sources%20) are just a reference, they are not mine nor do I have any kind of ownership
  Source links:  
+ * [Exercises and Exams](https://kuepper.userweb.mwn.de/)
  * [combined-cheatsheet.pdf](http://parallel.vub.ac.be/education/python/cheatsheets/combined-cheatsheet.pdf)
  * [Python_Cheat_Sheet_for_Beginners.pdf](https://www.datacamp.com/cheat-sheet/getting-started-with-python-cheat-sheet)
  * [davechild_python.pdf](https://cheatography.com/davechild/cheat-sheets/python/)
