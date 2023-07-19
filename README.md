@@ -17,6 +17,7 @@ for obvious reasons, i can't provide the excercises them selfes
  * [davechild_python.pdf](https://cheatography.com/davechild/cheat-sheets/python/)
  * [Data-Structures-Cheat-Sheet-Full-Image.pdf](https://intellipaat.com/blog/tutorial/python-tutorial/data-structures-with-python-cheat-sheet/?US)
  * [mementopython3-english.pdf](https://perso.limsi.fr/pointal/_media/python:cours:mementopython3-english.pdf)
+ * [Working_With_Text_Data_in_Python.pdf](https://images.datacamp.com/image/upload/v1671098753/Marketing/Blog/Working_With_Text_Data_in_Python.pdf)
 
 ## Licence
 Just use it with common sence, if you use it write down where you got it from (the git link) and mention that others should do the same. 
