@@ -1,90 +1,62 @@
 """
 Created on Sat Jul 01 15:30:47 2023
 @author: LockheedMartin
-# WiSe 22/23
+# SoSe 21
 """
-#%% A1 -> TM 
+#janky import
+import math as math
 
-import math as m
-
-Winkel = []
-Kräfte = []
-kx = []
-ky = []
-
-k = int(input("Kraft / N: "))
-while k > 0: 
-    Kräfte.append(k)
-    w = int(input("Winkel / Grad: "))
-    kx.append(k*m.cos(m.radians(w)))
-    ky.append(k*m.sin(m.radians(w)))
-    k = int(input("Kraft / N: "))
-    Winkel.append(w) 
-else: 
-    print("Es wurden keine Kräfte eingegeben.")
-
-i = len(Kräfte)
-j = 1
-while i > 0: 
-    print(f"{j:>4}:", end="")
-    l = Kräfte[j-1]
-    print(f"{l:>8.3f}N", end="")
-    h = Winkel[j-1]
-    print(f"{h:>8}°", end="")
-    print()
-    j+=1
-    i-=1
-
-kxg = sum(kx)
-kyg = sum(ky)
-kg = m.sqrt(kxg**2 + kyg**2) 
-print(f"{kg:.3f}")
-wgx = m.acos(kxg/kg)
-wg = m.degrees(wgx)
-print(f"{wg:.3f}")
-
-
-#%% A3 -> find x in input
-
-def find_first(s, ch):
-    anz = len(s)
-    pos = -1
-    for i in range(0, anz):
-        if ch in s:
-            pos = s.index(ch) + 1
-            break
-    return pos
-
-s = input("Zeichenkette eingeben: ")
-ch = "x"
-pos = find_first(s, ch)
-
-if pos == -1:
-    print(f"Das Zeichen {ch} wurde nicht gefunden")
+#defining all the shit I can
+g = 9.81
+h = 10
+t_start = 0
+"""
+#function def
+def x(t):
+    vx0 * t
     
-else:
-    print(f"Das Zeichen {ch} wurde an Position {pos} gefunden.")
+def y(t):
+    h+vy0 * t - .5 * g*t**2
+"""
 
-
-
-#%% A4 -> plot red&blue
-
-import matplotlib.pyplot as plt
-ys = []
-xs = []
-A = []
-x = -1
-
-while x <= 2:
-    y = 3*x**3 - 5*x**2 +1
-    Ay = 9* x **2 - 10*x
-    ys.append(y)
-    A.append(Ay)
-    xs.append(x)
-    x+= .1
+#lazy way of saying give me the right fcking angle...
+angle = -50
+while angle<10 or angle>35:
+    angle=int(input("Geben Sie den Winkel phi in Grad ein (10<=phi<=35): "))
     
-plt.plot(xs, ys, "r")
-plt.plot(xs, A, "b")
-plt.grid(True)
-plt.show() 
+    if angle<10 or angle>35:
+        print("Falsche Eingabe fuer phi: 10<=phi<=35")
+    else:
+        break
 
+
+vx0 = 5*math.cos(angle)
+vy0 = 5*math.sin(angle)
+
+t_end = vy0/g + ( (vy0/g)**2 + 2*h/g )**.5
+
+delta = t_end/30
+x_max = 0
+
+#placeholders:
+p1 = "t"
+p2 = "x(t)"
+p3 = "y(t)"
+
+print(f"{p1:^10}{p2:^10}{p3:^10}")
+print("- - - - - - - - - - - - - - - - - -")
+while t_start<t_end:
+    
+    x = vx0 * t_start
+    y = h+vy0 * t_start - .5 * g*t_start**2
+    
+    if x<x_max:
+        x_max = x
+        t_max = t_start
+        y_max = y
+    
+    print(f"{t_start:^10.4}{x:^10.4}{y:^10.4}")
+    t_start+=delta
+    
+print(f"Die maximale Hoehe {x_max:.2} wird nach {t_max:.2} Sekunden erreicht")
+print("Die zugehoerigen Koordinaten sind xmax= {x_max:.2} und ymax= {y_max:.2}")
