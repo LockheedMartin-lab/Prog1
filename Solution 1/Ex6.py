@@ -109,7 +109,7 @@ plt.show()
 
 
 
-#%%# T6 A1 -> rocket  working but weird af
+#%%# T6 A1 -> rocket only list
 m_anfang = 2.75e6
 
 m_nutz = m_anfang*(1-0.727)
