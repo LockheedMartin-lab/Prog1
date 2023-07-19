@@ -5,8 +5,6 @@ Created on Tue Apr 18 15:30:47 2023
 
 @author: LockheedMartin
 
-
-
 Anotation (only in this file): 
     #%%#: Finished
     #%% : something's wrong, baybe dk what though 
@@ -64,7 +62,11 @@ fig.savefig("look-ma_a-threshold-plot.png")
 
 
 
-#%%# T6 A1 working but weird af
+
+#%%# T6 A1 -> rocket  
+
+
+#%%# T6 A1 -> rocket  working but weird af
 m_anfang = 2.75e6
 
 m_nutz = m_anfang*(1-0.727)
@@ -102,8 +104,68 @@ for v_aktuell in v:
     print(f"t = {t:.2f} s, v = {v_aktuell:.3f} m/s")
 
 
+#%% T6 A1 -> rocket  !!rocket try 10 aka hopefully last try :P (it wasn't btw)
 
-#%%# T6 A2
+#imports
+import matplotlib.pyplot as plt
+
+
+#other specs
+R = 13.5*10**3 #Fuel usage
+F = 35.1*10**6 #force
+g = 9.81 #legendary G
+c = 340 #speed of sound in m/s
+stopcalcperc = 5 #in %
+
+
+#weight num
+fuel_weight_perc = 72.7
+stop_calc_weight_perc = 100 - 95
+liftof_weight = 2.75 *10**6
+fuel_weight = liftof_weight * fuel_weight_perc / 100
+stop_calc_weight = fuel_weight * stop_calc_weight_perc / 100
+
+
+#create list
+t_values = [] #x-Axis
+v_values = [] #y-Axis
+
+
+#first run values -> adjusting (hopefully by them selfes :P)
+v = 0
+t = 0
+#m = liftof_weight
+t_delta = 0.05
+current_weight = fuel_weight #= m
+
+
+
+while current_weight > stop_calc_weight:
+    a = F / current_weight - g
+    v = v + t_delta * a
+    current_weight = current_weight - R * t_delta
+
+    print(f"m: {current_weight}, t: {t}, v: {v}")
+    t_values.append(t)
+    v_values.append(v)
+    #print(f"t= {t:.2}, v= {v:.3}")
+    t+=t_delta
+    
+
+
+
+plt.plot(t_values,v_values,"r--")
+plt.grid(True)
+plt.show()
+
+print(f"v end: {v_values[-1]}")
+
+
+#%%# T6 A2 -> 3x throw
+
+import matplotlib.pyplot as plt
+import math as math
+
 
 delta = 0.05
 
@@ -177,7 +239,7 @@ plt.show()
 
 
 
-#%%# T6 A2 2. solution
+#%%# T6 A2 -> 3x throw  2. solution
 
 import matplotlib.pyplot as plt
 import math as math
@@ -252,64 +314,8 @@ plt.show()
 
 
 
-#%% !!rocket try 10 aka hopefully last try :P (it wasn't btw)
 
-#imports
-import matplotlib.pyplot as plt
-
-
-#other specs
-R = 13.5*10**3 #Fuel usage
-F = 35.1*10**6 #force
-g = 9.81 #legendary G
-c = 340 #speed of sound in m/s
-stopcalcperc = 5 #in %
-
-
-#weight num
-fuel_weight_perc = 72.7
-stop_calc_weight_perc = 100 - 95
-liftof_weight = 2.75 *10**6
-fuel_weight = liftof_weight * fuel_weight_perc / 100
-stop_calc_weight = fuel_weight * stop_calc_weight_perc / 100
-
-
-#create list
-t_values = [] #x-Axis
-v_values = [] #y-Axis
-
-
-#first run values -> adjusting (hopefully by them selfes :P)
-v = 0
-t = 0
-#m = liftof_weight
-t_delta = 0.05
-current_weight = fuel_weight #= m
-
-
-
-while current_weight > stop_calc_weight:
-    a = F / current_weight - g
-    v = v + t_delta * a
-    current_weight = current_weight - R * t_delta
-
-    print(f"m: {current_weight}, t: {t}, v: {v}")
-    t_values.append(t)
-    v_values.append(v)
-    #print(f"t= {t:.2}, v= {v:.3}")
-    t+=t_delta
-    
-
-
-
-plt.plot(t_values,v_values,"r--")
-plt.grid(True)
-plt.show()
-
-print(f"v end: {v_values[-1]}")
-
-
-#%% try  T6 A3 almost finished
+#%%# T6 A3 -> table  automated scale
 
 import math as math
 
@@ -337,12 +343,12 @@ var_0 = 0
 delta_var = .1
 count= [0]
 while u<8:
-    var = var_0 + delta_var
-    count.append(var)
+    var_0 = var_0 + delta_var
+    count.append(var_0)
     u+=1
     
 lable = "x|y" #so it's centered below, that way you don't have to search for the right amount of spaces below
-print(f"{lable:^6}|{count[0]:6.1f}{count[1]:6.1f}{count[2]:6.1f}{count[3]:6.1f}{count[4]:6.1f}{count[5]:6.1f}{count[6]:6.1f}{count[7]:6.1f}") #first line and 
+print(f"{lable:^6}  {count[0]:^6.1f}{count[1]:^6.1f}{count[2]:^6.1f}{count[3]:^6.1f}{count[4]:^6.1f}{count[5]:^6.1f}{count[6]:^6.1f}{count[7]:^6.1f}{count[8]:^6.1f}") #first line and 
 
 
 
@@ -352,7 +358,7 @@ y_value = []
 x_value = []
 x = 0
 
-while x < x_end:
+while x <= x_end:
     y = 0
     
     while y < y_end:
@@ -364,102 +370,16 @@ while x < x_end:
         y = y + increment_y
 
 
-    print(f"{x_value[0]:6.3f}{y_value[0]:6.3f}{y_value[1]:6.3f}{y_value[2]:6.3f}{y_value[3]:6.3f}{y_value[4]:6.3f}{y_value[5]:6.3f}{y_value[6]:6.3f}{y_value[7]:6.3f}")
+    print(f"{x_value[0]:^6.1f}|{y_value[0]:6.3f}{y_value[1]:6.3f}{y_value[2]:6.3f}{y_value[3]:6.3f}{y_value[4]:6.3f}{y_value[5]:6.3f}{y_value[6]:6.3f}{y_value[7]:6.3f}{y_value[8]:6.3f}")
 
     y_value = []
     x_value = []
     
     x = x + increment_x
-    
 
 
 
-
-#%% try2  T6 A3 not finished idk weird af
-
-import math as math
-
-y = 0
-x = 0
-
-increment_y = .1
-y_start = 0
-y_end = .8
-
-increment_x = .2
-x_start = 0
-x_end = 1.4
-
-#Important info:
-    #Cell size 6 & .*** dec
-
-
-e = math.e #def of e with math 
-
-#f = (e**(-(x**2 + y**2)))/(1 + x**2 + y**2)**.5
-
-print("x|y  |  0.0    0.1    0.2    0.3    0.4    0.5    0.6    0.7    0.8  ")
-
-y_value = []
-x_value = []
-
-while x_start < x_end:
-    
-
-    
-    while y_start < y_end:
-        
-        f = (e**(-(x**2 + y**2)))/(1 + x**2 + y**2)**.5
-        y_value.append(f)
-        x_value.append(x)
-        y = y + increment_y
-        print(f"{y_value[0]:6.3f}{x_value[0]:6.3f}{x_value[1]:6.3f}{x_value[2]:6.3f}{x_value[3]:6.3f}{x_value[4]:6.3f}{x_value[5]:6.3f}{x_value[6]:6.3f}{x_value[7]:6.3f}{x_value[8]:6.3f}")
-
-
-    y_value = []
-    x_value = []
-    x_start = x_start + increment_x
-
-
-
-
-#%% BROKEN T6 A3 not finished running like 3x times too much xD wrong af BROKEN
-
-import math
-
-y = 0
-x = 0
-
-increment_y = 0.1
-y_start = 0
-y_end = 0.8
-
-increment_x = 0.2
-x_start = 0
-x_end = 1.4
-
-e = math.e
-
-print("x|y  |  0.0    0.1    0.2    0.3    0.4    0.5    0.6    0.7    0.8  ")
-
-while x_start <= x_end:
-    y_start = 0
-    
-    while y_start <= y_end:
-        f = (e**(-(x**2 + y**2))) / (1 + x**2 + y**2)**0.5
-        print(f"{x:6.3f}{y:6.3f}{f:6.3f}", end=" ")
-        y_start += increment_y
-        y = round(y + increment_y, 1)
-    
-    print()
-    x_start += increment_x
-    x = round(x + increment_x, 1)
-    y = 0
-
-
-
-
-#%%# T6 A3 short and nice solution :)
+#%%# T6 A3 -> table  short and nice solution :)
 
 import math as m
 
@@ -483,3 +403,16 @@ for l in xwerte:
 x = funktion(0.2, 0.3)
 print()
 print(f"{x}")
+
+
+
+#%% T6 A4 -> line counter  start but idk about the num count, can't test this one
+i = 0
+file = open("c:/temp/data.txt", "r")
+for line in file:
+    print(line.upper(), end="")
+    i=i+1
+    
+
+print(f"Lines: {i}")
+file.close()
