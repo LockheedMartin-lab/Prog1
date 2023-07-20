@@ -3,6 +3,7 @@
 $${\color{red}Code \space functionality \space is \space not \space guaranteed}$$
 Folders:
 * [Prog1 course solutions 1-6](https://github.com/LockheedMartin-lab/Prog1/tree/main/Solution)
+* [Prog1 course solutions 1-6 vol 2 (not mine)](https://github.com/LockheedMartin-lab/Prog1/tree/main/Solution%202)
 * [Solution of finals](https://github.com/LockheedMartin-lab/Prog1/tree/main/Finals)
 * [Other sources](https://github.com/LockheedMartin-lab/Prog1/tree/main/Other%20sources%20)  
 
