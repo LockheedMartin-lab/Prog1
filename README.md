@@ -7,7 +7,7 @@ Folders:
 * [Prog1 course solutions 1-6](https://github.com/LockheedMartin-lab/Prog1/tree/main/Solution%201)
 * [Prog1 course solutions 1-6 vol 2 (not mine)](https://github.com/LockheedMartin-lab/Prog1/tree/main/Solution%202)
 * [Solution of finals](https://github.com/LockheedMartin-lab/Prog1/tree/main/Finals)
-* [Other sources](https://github.com/LockheedMartin-lab/Prog1/tree/main/Other%20sources%20)  
+* [Other sources](https://github.com/LockheedMartin-lab/Prog1/tree/main/Other%20sources)  
 
 for obvious reasons, i can't provide the excercises and exams them selfes. You can find them [here](https://kuepper.userweb.mwn.de/) though.
 
