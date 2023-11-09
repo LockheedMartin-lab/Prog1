@@ -12,7 +12,7 @@ Folders:
 for obvious reasons, i can't provide the excercises and exams them selfes. You can find them [here](https://kuepper.userweb.mwn.de/) though.
 
 
-### The files in folder ['other scources'](https://github.com/LockheedMartin-lab/Prog1/tree/main/Other%20sources%20) are just a reference, they are not mine nor do I have any kind of ownership
+### The files in folder ['other sources'](https://github.com/LockheedMartin-lab/Prog1/tree/main/Other%20sources%20) are just a reference, they are not mine nor do I have any kind of ownership
  Source links:  
  * [Binary/Hex/Decimal converter](https://www.matheretter.de/rechner/zahlenkonverter)
  * [combined-cheatsheet.pdf](http://parallel.vub.ac.be/education/python/cheatsheets/combined-cheatsheet.pdf)
